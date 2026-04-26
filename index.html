@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экосистема твоей жизни | Марина Никонова</title>
+
+    <style>
+        :root {
+            --green-deep: #6b8b7a;
+            --green-mid: #8aa899;
+            --green-soft: #a8c4b5;
+            --green-pale: #cbdcd2;
+            --green-bg: #eaf1ed;
+            --green-light: #f4f8f5;
+            --lilac: #b8a5c9;
+            --lilac-deep: #9b82b3;
+            --lilac-soft: #d4c9df;
+            --lilac-pale: #ede6f3;
+            --white: #ffffff;
+            --cream: #fafaf8;
+            --text-dark: #2c2c2c;
+            --text-mid: #5a5a5a;
+            --text-light: #7a7a7a;
+            --border-subtle: #e0e4e1;
+            --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.05);
+            --shadow-elevated: 0 6px 28px rgba(0, 0, 0, 0.08);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-stack: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--green-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.01em;
+        }
+
+        /* ── Typography ─────────────────────── */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 400;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+        h4 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        p {
+            color: var(--text-mid);
+            font-weight: 400;
+        }
+        .text-small {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        .text-caption {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-light);
+        }
+
+        /* ── Layout ────────────────────────── */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+        .section {
+            padding: 56px 0;
+        }
+        .section--tight {
+            padding: 36px 0;
+        }
+        .section--hero {
+            padding: 48px 0 40px;
+        }
+
+        /* ── Hero ──────────────────────────── */
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-photo-wrapper {
+            flex: 0 0 220px;
+            position: relative;
+        }
+        .hero-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--green-soft);
+            box-shadow: var(--shadow-elevated);
+            background: var(--green-pale);
+            display: block;
+            transition: transform var(--transition);
+        }
+        .hero-photo:hover {
+            transform: scale(1.03);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--lilac-pale);
+            color: var(--lilac-deep);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .hero-text {
+            flex: 1;
+            min-width: 260px;
+        }
+        .hero-text h1 {
+            margin-bottom: 6px;
+        }
+        .hero-text .subtitle {
+            font-size: 1rem;
+            color: var(--green-deep);
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 0.02em;
+        }
+        .hero-text .credentials {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 16px;
+        }
+        .hero-text .credentials li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+        .hero-text .credentials li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green-soft);
+        }
+        .slogan {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--green-deep);
+            margin: 10px 0 20px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        /* ── Buttons ───────────────────────── */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-stack);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            padding: 13px 32px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            border: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .btn--primary {
+            background: var(--lilac);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(155, 130, 179, 0.3);
+        }
+        .btn--primary:hover {
+            background: var(--lilac-deep);
+            box-shadow: 0 6px 20px rgba(155, 130, 179, 0.4);
+            transform: translateY(-1px);
+        }
+        .btn--outline {
+            background: transparent;
+            color: var(--lilac-deep);
+            border: 1.5px solid var(--lilac-soft);
+        }
+        .btn--outline:hover {
+            background: var(--lilac-pale);
+            border-color: var(--lilac-deep);
+        }
+        .btn--small {
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border-radius: 22px;
+            letter-spacing: 0.04em;
+        }
+        .btn--green {
+            background: var(--green-deep);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(107, 139, 122, 0.25);
+        }
+        .btn--green:hover {
+            background: #5a7868;
+            box-shadow: 0 6px 20px rgba(107, 139, 122, 0.35);
+            transform: translateY(-1px);
+        }
+
+        /* ── Diagnostic Section ────────────── */
+        .diagnostic-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .diagnostic-header h2 {
+            color: var(--text-dark);
+        }
+        .diagnostic-header .divider {
+            width: 50px;
+            height: 2px;
+            background: var(--green-soft);
+            margin: 14px auto;
+            border-radius: 1px;
+        }
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .level-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px 22px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-subtle);
+            transition: all var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .level-card:hover {
+            box-shadow: var(--shadow-elevated);
+            border-color: var(--green-pale);
+        }
+        .level-card__icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+        .level-card__icon--foundation {
+            background: #e8efe9;
+            color: var(--green-deep);
+        }
+        .level-card__icon--environment {
+            background: #e9edef;
+            color: #6b8f9b;
+        }
+        .level-card__icon--crown {
+            background: #ede6f3;
+            color: var(--lilac-deep);
+        }
+        .level-card h4 {
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        .level-card__subtitle {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+        .level-card .checklist {
+            list-style: none;
+            padding: 0;
+            flex: 1;
+        }
+        .level-card .checklist li {
+            margin-bottom: 10px;
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            line-height: 1.4;
+        }
+        .level-card .checklist li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Custom Checkbox ───────────────── */
+        .custom-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+            padding: 6px 8px;
+            border-radius: var(--radius-sm);
+            transition: background var(--transition);
+            margin: 0 -8px;
+        }
+        .custom-checkbox:hover {
+            background: var(--green-light);
+        }
+        .custom-checkbox input[type="checkbox"] {
+            display: none;
+        }
+        .custom-checkbox .checkmark {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--green-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            margin-top: 1px;
+            background: var(--white);
+        }
+        .custom-checkbox input:checked+.checkmark {
+            background: var(--green-deep);
+            border-color: var(--green-deep);
+        }
+        .custom-checkbox .checkmark::after {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) translateY(-1px);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .custom-checkbox input:checked+.checkmark::after {
+            opacity: 1;
+        }
+        .custom-checkbox .check-label {
+            flex: 1;
+            font-size: 0.87rem;
+            color: var(--text-mid);
+            line-height: 1.45;
+        }
+        .custom-checkbox input:checked~.check-label {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* ── Submit area ──────────────────── */
+        .submit-area {
+            text-align: center;
+            margin-top: 36px;
+        }
+        .submit-area .btn {
+            font-size: 1rem;
+            padding: 15px 44px;
+        }
+        .submit-hint {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+        /* ── Results Section ──────────────── */
+        .results-section {
+            display: none;
+            background: var(--white);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .results-section--visible {
+            display: block;
+            animation: fadeSlideIn 0.5s ease forwards;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .results-inner {
+            padding: 40px 0;
+        }
+        .results-quote {
+            text-align: center;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--green-deep);
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        .results-level-tag {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .results-level-tag span {
+            display: inline-block;
+            background: var(--lilac-pale);
+            color: var(--lilac-deep);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            padding: 6px 18px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+        .results-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .tool-card {
+            background: var(--green-light);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            border: 1px solid var(--border-subtle);
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .tool-card:hover {
+            border-color: var(--green-soft);
+            box-shadow: var(--shadow-card);
+        }
+        .tool-card__name {
+            font-weight: 500;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+        .tool-card__desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.4;
+            flex: 1;
+        }
+        .results-cta {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* ── Footer ────────────────────────── */
+        .site-footer {
+            background: var(--green-bg);
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            letter-spacing: 0.02em;
+        }
+        .site-footer .footer-slogan {
+            font-style: italic;
+            color: var(--green-deep);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .site-footer a {
+            color: var(--lilac-deep);
+            text-decoration: none;
+            transition: color var(--transition);
+            font-weight: 500;
+        }
+        .site-footer a:hover {
+            color: var(--lilac);
+            text-decoration: underline;
+        }
+        .site-footer .footer-divider {
+            width: 30px;
+            height: 1px;
+            background: var(--green-soft);
+            margin: 10px auto;
+            border-radius: 1px;
+        }
+
+        /* ── Scroll indicator ──────────────── */
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 16px;
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator span {
+            font-size: 1.5rem;
+            color: var(--green-soft);
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* ── Score badges ─────────────────── */
+        .score-badge-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 16px 0 8px;
+        }
+        .score-badge {
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 18px;
+            letter-spacing: 0.04em;
+            transition: all var(--transition);
+        }
+        .score-badge--strong {
+            background: #e4efe6;
+            color: #4a7a55;
+        }
+        .score-badge--moderate {
+            background: #fdf4e3;
+            color: #b08940;
+        }
+        .score-badge--deficit {
+            background: #fce8ec;
+            color: #b5505e;
+        }
+
+        /* ── Responsive ────────────────────── */
+        @media (max-width: 900px) {
+            .levels-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+            }
+            .hero-grid {
+                gap: 28px;
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-photo-wrapper {
+                flex: 0 0 160px;
+            }
+            .hero-photo {
+                width: 160px;
+                height: 160px;
+                margin: 0 auto;
+            }
+            .hero-text {
+                text-align: center;
+                min-width: auto;
+            }
+            .hero-text .credentials li {
+                text-align: left;
+                padding-left: 16px;
+            }
+            .hero-text .credentials {
+                display: inline-block;
+                text-align: left;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .results-tools {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .levels-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .hero-photo {
+                width: 140px;
+                height: 140px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            h2 {
+                font-size: 1.35rem;
+            }
+            .section {
+                padding: 32px 0;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
+            .btn--primary {
+                width: 100%;
+                max-width: 320px;
+            }
+            .submit-area .btn {
+                width: 100%;
+                max-width: 340px;
+            }
+            .results-tools {
+                grid-template-columns: 1fr;
+            }
+            .level-card {
+                padding: 20px 16px 18px;
+            }
+            .score-badge-row {
+                gap: 6px;
+            }
+            .score-badge {
+                font-size: 0.72rem;
+                padding: 5px 10px;
+            }
+        }
+        @media (max-width: 380px) {
+            .hero-photo {
+                width: 120px;
+                height: 120px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            .hero-text .credentials li {
+                font-size: 0.8rem;
+            }
+            .slogan {
+                font-size: 0.95rem;
+            }
+            .btn {
+                font-size: 0.78rem;
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════ HERO / ВХОД В СИСТЕМУ ═══════════════ -->
+    <section class="section--hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Фото -->
+                <div class="hero-photo-wrapper">
+                    <img
+                    src="https://drive.google.com/uc?export=view&id=1vrfWEO9aeRWoTldJHBFDsAhA85FlV-G5"
+                    alt="Марина Никонова"
+                    class="hero-photo"
+                    loading="eager"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.photo-fallback').style.display='flex';"
+                    >
+                    <div class="photo-fallback" style="display:none; width:220px; height:220px; border-radius:50%; background:var(--green-pale); align-items:center; justify-content:center; font-size:3rem; color:var(--green-deep); border:3px solid var(--green-soft);">
+                        🌿
+                    </div>
+                </div>
+                <!-- Текст -->
+                <div class="hero-text">
+                    <span class="hero-badge">Психолог · 20 лет практики</span>
+                    <h1>Марина Никонова</h1>
+                    <p class="subtitle">вдохновляю на перемены</p>
+                    <ul class="credentials">
+                        <li>Кандидат психологических наук, 20 лет практики</li>
+                        <li>Более 6 лет сопровождаю учебные процессы в онлайн-проектах</li>
+                        <li>Автор трёх книг и более 17 статей</li>
+                        <li>Счастливая женщина и мама</li>
+                    </ul>
+                    <p class="slogan">Начните строить свою экосистему жизни,<br>где реализуется ваш талант</p>
+                    <a href="#diagnostic" class="btn btn--primary">Начать диагностику своей экосистемы</a>
+                    <div class="scroll-indicator">
+                        <span>↓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ДИАГНОСТИКА ═══════════════ -->
+    <section class="section" id="diagnostic">
+        <div class="container">
+            <div class="diagnostic-header">
+                <h2>Экспресс-диагностика 3-х уровней</h2>
+                <div class="divider"></div>
+                <p class="text-small">Отметьте пункты, про которые вы можете сказать: <em>«Да, это про меня!»</em></p>
+            </div>
+
+            <!-- Сетка уровней -->
+            <div class="levels-grid" id="levelsGrid">
+                <!-- Уровень 1: Фундамент -->
+                <div class="level-card" data-level="1">
+                    <div class="level-card__icon level-card__icon--foundation">🌱</div>
+                    <h4>Уровень 1</h4>
+                    <p class="level-card__subtitle">Фундамент — Внутренняя устойчивость</p>
+                    <ul class="checklist">
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="1" data-index="0">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я осознаю свои страхи и готова работать с ними</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="1" data-index="1">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я чувствую связь между своим телом и эмоциями</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="1" data-index="2">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я перестала носить маску «всё хорошо»</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="1" data-index="3">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я готова выйти из состояния застревания</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Уровень 2: Среда -->
+                <div class="level-card" data-level="2">
+                    <div class="level-card__icon level-card__icon--environment">🪞</div>
+                    <h4>Уровень 2</h4>
+                    <p class="level-card__subtitle">Среда — Социальное зеркало</p>
+                    <ul class="checklist">
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="2" data-index="0">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Мой дом — это источник моей энергии</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="2" data-index="1">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я понимаю причины поведения своего ребёнка</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="2" data-index="2">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Окружение поддерживает мой рост</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="2" data-index="3">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я умею выстраивать границы с близкими</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Уровень 3: Крона -->
+                <div class="level-card" data-level="3">
+                    <div class="level-card__icon level-card__icon--crown">✨</div>
+                    <h4>Уровень 3</h4>
+                    <p class="level-card__subtitle">Крона — Профессиональная реализация</p>
+                    <ul class="checklist">
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="3" data-index="0">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я проработала свои финансовые установки</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="3" data-index="1">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я вижу, как монетизировать свой текущий опыт и талант</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="3" data-index="2">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я знаю, где искать высокооплачиваемые проекты</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" data-level="3" data-index="3">
+                                <span class="checkmark"></span>
+                                <span class="check-label">Я совмещаю работу и семью без выгорания</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Кнопка подсчёта -->
+            <div class="submit-area">
+                <button class="btn btn--green" id="calculateBtn" type="button">
+                    ✦ Получить результат диагностики
+                </button>
+                <span class="submit-hint">Подсчёт баллов и персональные рекомендации</span>
+                <div class="score-badge-row" id="scoreBadges" style="display:none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ РЕЗУЛЬТАТЫ ═══════════════ -->
+    <section class="results-section" id="resultsSection">
+        <div class="container results-inner">
+            <p class="results-quote" id="resultsQuote"></p>
+            <div class="results-level-tag" id="resultsLevelTag"></div>
+            <div class="results-tools" id="resultsTools"></div>
+            <div class="results-cta">
+                <a href="#diagnostic" class="btn btn--outline btn--small">← Вернуться к диагностике</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ПОДВАЛ ═══════════════ -->
+    <footer class="site-footer">
+        <p class="footer-slogan">«Начните строить свою экосистему уже сегодня»</p>
+        <div class="footer-divider"></div>
+        <p>© 2026 Марина Никонова</p>
+        <p>
+            <a href="https://vk.com/retritclubnikonovam" target="_blank" rel="noopener noreferrer">VK: retritclubnikonovam</a>
+        </p>
+    </footer>
+
+    <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+    <script>
+        (function() {
+            // ── База инструментов по уровням ─────────────────
+            const toolsDB = {
+                1: {
+                    // Фундамент
+                    inspiration: 'Кризис — это не конец, это поворот',
+                    items: [
+                        { name: '5 масок страха — чек-лист',
+                            desc: 'Самодиагностика: поймите, какой страх сейчас вами движет.',
+                            url: 'https://stepik.org/271260' },
+                        { name: 'Методика работы со страхом — видео-урок',
+                            desc: 'Техника, которая поможет сделать первый шаг, когда страшно что-то менять.',
+                            url: 'https://stepik.org/a/263593' },
+                        { name: 'Пособие по психосоматике — гайд',
+                            desc: 'База для самостоятельной диагностики своего состояния.',
+                            url: 'https://stepik.org/267929' },
+                        { name: 'Психосоматика стресса — видео-урок',
+                            desc: 'Понимание, как зажимы в теле связаны с психологическим состоянием.',
+                            url: 'https://stepik.org/course/255339' },
+                        { name: 'Живи свою жизнь — квест ВК',
+                            desc: 'Игровой формат для выхода из состояния «застревания».',
+                            url: 'https://vk.com/@retritclubnikonovam-zhivi-svou-zhizn' },
+                        { name: 'Матрица — онлайн-курс',
+                            desc: 'Поможет лучше понять себя и свои устремления.',
+                            url: 'https://stepik.org/214072' },
+                        { name: 'Консультация психолога онлайн',
+                            desc: 'Персональная работа с профессионалом.',
+                            url: 'https://vk.com/market/product/konsultatsia-psikhologa-onlayn-218283333-10144678' },
+                    ],
+                },
+                2: {
+                    // Среда
+                    inspiration: 'Изменишься ты — изменится твоё окружение',
+                    items: [
+                        { name: 'Отношения с мамой — путь к счастливой жизни',
+                            desc: 'Онлайн-курс: выстраивайте границы, убирайте ложные установки, прорабатывайте детские травмы.',
+                            url: 'https://stepik.org/a/211910' },
+                        { name: 'О чём молчит ваш ребёнок — книга',
+                            desc: 'Секреты воспитания для заботливых мам и пап.',
+                            url: 'https://ridero.ru/books/o_chyom_molchit_vash_rebyonok/' },
+                        { name: 'Зачем «детям» деньги? — книга',
+                            desc: 'Финансовое воспитание: о чём важно говорить с детьми.',
+                            url: 'https://ridero.ru/books/zachem_detyam_dengi/' },
+                        { name: 'Тайм-менеджмент, который работает — онлайн-курс',
+                            desc: 'Научитесь организовывать свою жизнь и успевать многое.',
+                            url: 'https://vk.com/market/product/taym-menedzhment-kotory-rabotaet-218283333-8791267' },
+                        { name: 'Консультация психолога онлайн',
+                            desc: 'Персональная работа с профессионалом.',
+                            url: 'https://vk.com/market/product/konsultatsia-psikhologa-onlayn-218283333-10144678' },
+                    ],
+                },
+                3: {
+                    // Крона
+                    inspiration: 'Реализация возможна без выгорания',
+                    items: [
+                        { name: '5 масок страха — чек-лист',
+                            desc: 'Самодиагностика: поймите, какой страх сейчас вами движет.',
+                            url: 'https://stepik.org/271260' },
+                        { name: 'Методика работы со страхом — видео-урок',
+                            desc: 'Техника для первого шага, когда страшно что-то менять.',
+                            url: 'https://stepik.org/a/263593' },
+                        { name: '5 шагов к работе мечты — марафон',
+                            desc: 'Поймите, где и как искать работу и реализовывать свой талант.',
+                            url: 'https://vk.com/worklabonline' },
+                        { name: 'Карьерное консультирование — онлайн-курс',
+                            desc: 'Научитесь искать онлайн-работу и повышать свой доход.',
+                            url: 'https://stepik.org/a/273287' },
+                        { name: 'Супервизия для начинающего специалиста',
+                            desc: 'Профессиональная поддержка для роста в карьере.',
+                            url: 'https://vk.com/market/product/supervizia-dlya-psikhologov-218283333-11802051' },
+                        { name: 'Тайм-менеджмент, который работает — онлайн-курс',
+                            desc: 'Научитесь организовывать свою жизнь и успевать многое.',
+                            url: 'https://vk.com/market/product/taym-menedzhment-kotory-rabotaet-218283333-8791267' },
+                        { name: 'Консультация психолога онлайн',
+                            desc: 'Персональная работа с профессионалом.',
+                            url: 'https://vk.com/market/product/konsultatsia-psikhologa-onlayn-218283333-10144678' },
+                    ],
+                },
+            };
+
+            const levelNames = {
+                1: 'Фундамент — Внутренняя устойчивость',
+                2: 'Среда — Социальное зеркало',
+                3: 'Крона — Профессиональная реализация',
+            };
+
+            // ── DOM-элементы ────────────────────────────────
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsQuote = document.getElementById('resultsQuote');
+            const resultsLevelTag = document.getElementById('resultsLevelTag');
+            const resultsTools = document.getElementById('resultsTools');
+            const scoreBadges = document.getElementById('scoreBadges');
+            const allCheckboxes = document.querySelectorAll('#levelsGrid input[type="checkbox"]');
+
+            // ── Подсчёт баллов ──────────────────────────────
+            function calculateScores() {
+                const scores = { 1: 0, 2: 0, 3: 0 };
+                const totalPerLevel = { 1: 4, 2: 4, 3: 4 };
+
+                allCheckboxes.forEach(cb => {
+                    const level = parseInt(cb.getAttribute('data-level'));
+                    if (cb.checked && scores.hasOwnProperty(level)) {
+                        scores[level]++;
+                    }
+                });
+
+                return { scores, totalPerLevel };
+            }
+
+            // ── Определение дефицитных уровней ──────────────
+            function findDeficitLevels(scores) {
+                const minScore = Math.min(scores[1], scores[2], scores[3]);
+                const deficitLevels = [];
+                for (const lvl of [1, 2, 3]) {
+                    if (scores[lvl] === minScore) {
+                        deficitLevels.push(lvl);
+                    }
+                }
+                // Если все уровни набрали 4/4 — всё равно показываем все для информации
+                if (minScore === 4 && deficitLevels.length === 3) {
+                    return { levels: [1, 2, 3], isAllStrong: true };
+                }
+                return { levels: deficitLevels, isAllStrong: minScore === 4 };
+            }
+
+            // ── Отрисовка результатов ───────────────────────
+            function renderResults(deficitLevels, scores, isAllStrong) {
+                // Цитата
+                if (isAllStrong && deficitLevels.length === 3) {
+                    resultsQuote.textContent =
+                        'Ваша экосистема в прекрасном балансе! Вот инструменты для дальнейшего роста.';
+                } else if (deficitLevels.length === 1) {
+                    resultsQuote.textContent = toolsDB[deficitLevels[0]].inspiration;
+                } else {
+                    const quotes = deficitLevels.map(l => toolsDB[l].inspiration);
+                    resultsQuote.textContent = quotes.join(' · ');
+                }
+
+                // Тег уровня
+                const levelTags = deficitLevels.map(l => levelNames[l]);
+                resultsLevelTag.innerHTML = levelTags
+                    .map(t => `<span>${t}</span>`)
+                    .join(' ');
+
+                // Инструменты (собираем уникальные по URL для объединённых результатов)
+                const seenUrls = new Set();
+                const allTools = [];
+                for (const lvl of deficitLevels) {
+                    for (const tool of toolsDB[lvl].items) {
+                        if (!seenUrls.has(tool.url)) {
+                            seenUrls.add(tool.url);
+                            allTools.push(tool);
+                        }
+                    }
+                }
+
+                resultsTools.innerHTML = allTools
+                    .map(
+                        tool => `
+                    <div class="tool-card">
+                        <div>
+                            <p class="tool-card__name">${tool.name}</p>
+                            <p class="tool-card__desc">${tool.desc}</p>
+                        </div>
+                        <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--small">Перейти →</a>
+                    </div>
+                `
+                    )
+                    .join('');
+
+                // Скролл к результатам
+                resultsSection.classList.add('results-section--visible');
+                setTimeout(() => {
+                    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+
+            // ── Отрисовка бейджей баллов ────────────────────
+            function renderScoreBadges(scores) {
+                const badgeClass = (score) => {
+                    if (score === 4) return 'score-badge--strong';
+                    if (score >= 2) return 'score-badge--moderate';
+                    return 'score-badge--deficit';
+                };
+                const badgeLabel = (score, level) => {
+                    const shortName = { 1: 'Фундамент', 2: 'Среда', 3: 'Крона' };
+                    return `${shortName[level]}: ${score}/4`;
+                };
+
+                scoreBadges.innerHTML = [1, 2, 3]
+                    .map(
+                        l =>
+                        `<span class="score-badge ${badgeClass(scores[l])}">${badgeLabel(scores[l], l)}</span>`
+                    )
+                    .join('');
+                scoreBadges.style.display = 'flex';
+            }
+
+            // ── Обработчик клика ────────────────────────────
+            calculateBtn.addEventListener('click', () => {
+                const { scores } = calculateScores();
+                const { levels: deficitLevels, isAllStrong } = findDeficitLevels(scores);
+
+                renderScoreBadges(scores);
+                renderResults(deficitLevels, scores, isAllStrong);
+
+                // Лёгкая анимация кнопки
+                calculateBtn.textContent = '✓ Результат готов';
+                calculateBtn.style.background = 'var(--green-soft)';
+                setTimeout(() => {
+                    calculateBtn.textContent = '✦ Получить результат диагностики';
+                    calculateBtn.style.background = '';
+                }, 2000);
+            });
+
+            // ── Плавный скролл для CTA-кнопки в hero ────────
+            document.querySelectorAll('a[href="#diagnostic"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.getElementById('diagnostic');
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // ── Инициализация: сброс результатов при изменении чекбоксов ──
+            allCheckboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    // Скрываем результаты, если пользователь меняет ответы
+                    if (resultsSection.classList.contains('results-section--visible')) {
+                        resultsSection.classList.remove('results-section--visible');
+                        scoreBadges.style.display = 'none';
+                        calculateBtn.textContent = '✦ Получить результат диагностики';
+                        calculateBtn.style.background = '';
+                    }
+                });
+            });
+
+            console.log('🌿 Экосистема твоей жизни — навигатор готов.');
+            console.log('   Отметьте пункты в каждом уровне и нажмите «Получить результат».');
+        })();
+    </script>
+</body>
+</html>
